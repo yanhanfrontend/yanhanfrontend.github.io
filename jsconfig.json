@@ -3,9 +3,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "resolveJsonModule": true,
-    "module": "ESNext",
-    "moduleResolution": "NodeNext"
+    "resolveJsonModule": true
   },
   "exclude": ["node_modules", "dist"]
 }
