@@ -7,7 +7,7 @@
     </el-col>
   </el-row>
 
-  <div class="flex justify-center mt-2">
+  <div class="flex justify-center mt-4">
     <el-pagination
         v-model:current-page="currentPage"
         :page-size="pageSize"

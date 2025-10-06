@@ -1,0 +1,41 @@
+name: Deploy Vite to GitHub Pages
+
+# 触发条件：当推送到 main 分支时执行
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # 使用 Ubuntu 系统
+
+    steps:
+      # 1. 拉取代码
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. 安装 Node.js（指定版本，如 18.x）
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm' # 缓存 npm 依赖，加速构建
+
+      # 3. 安装依赖
+      - name: Install dependencies
+        run: npm install
+
+      # 4. 打包项目（生成 dist 文件夹）
+      - name: Build project
+        run: npm run build
+
+      # 5. 部署到 GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          # 部署的文件夹（Vite 打包默认输出到 dist）
+          publish_dir: ./dist
+          # 部署密钥（自动生成，无需手动配置）
+          github_token: ${{ secrets.github_pages }}
+          # 部署到 gh-pages 分支（默认）
+          publish_branch: gh-pages
