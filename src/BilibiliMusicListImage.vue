@@ -13,7 +13,7 @@
     <el-pagination
         v-model:current-page="currentPage"
         :page-size="pageSize"
-        :pager-count="50"
+        :pager-count="pagerCount"
         :disabled="disabled"
         :background="background"
         layout="total, prev, pager, next"
@@ -37,7 +37,8 @@ const disabled = ref(false)
 const allData = ref(musics);
 
 const currentPage = ref(1);
-const pageSize = ref(36);
+const pageSize = ref(parseInt(import.meta.env.VITE_PAGE_SIZE));
+const pagerCount = ref(parseInt(import.meta.env.VITE_PAGER_COUNT));
 
 const currentData = computed(() => {
   const startIndex = (currentPage.value - 1) * pageSize.value;
