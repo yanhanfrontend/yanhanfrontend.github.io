@@ -1,6 +1,6 @@
 <template>
   <el-row :gutter="20">
-    <el-col v-for="music in currentData" :key="music" :span="4" class="mb-6">
+    <el-col v-for="music in currentData" :key="music" :xs="8" :sm="6" :md="4" class="mb-6">
       <el-card class="max-w-[480px] h-[110px]" shadow="always">
         <el-text size="large" line-clamp="3">
           {{ music }}
