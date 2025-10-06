@@ -5,6 +5,10 @@ on:
   push:
     branches: [ main ]
 
+# 关键：添加权限配置
+permissions:
+  contents: write  # 允许写入仓库内容（包括推送分支）
+
 jobs:
   deploy:
     runs-on: ubuntu-latest # 使用 Ubuntu 系统
