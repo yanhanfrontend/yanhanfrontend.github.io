@@ -1,8 +1,10 @@
 <template>
-  <el-row :gutter="10">
-    <el-col v-for="music in currentData" :key="music" :span="4" class="mb-2">
-      <el-card class="max-w-[480px] h-[130px] overflow-hidden text-ellipsis line-clamp-3">
-        <p class="text item" :title="music">{{ music }}</p>
+  <el-row :gutter="20">
+    <el-col v-for="music in currentData" :key="music" :span="4" class="mb-6">
+      <el-card class="max-w-[480px] h-[110px]" shadow="always">
+        <el-text size="large" line-clamp="3">
+          {{ music }}
+        </el-text>
       </el-card>
     </el-col>
   </el-row>
