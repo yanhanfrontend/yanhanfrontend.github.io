@@ -36,6 +36,6 @@ jobs:
           # 部署的文件夹（Vite 打包默认输出到 dist）
           publish_dir: ./dist
           # 部署密钥（自动生成，无需手动配置）
-          github_token: ${{ secrets.github_pages }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           # 部署到 gh-pages 分支（默认）
           publish_branch: gh-pages
