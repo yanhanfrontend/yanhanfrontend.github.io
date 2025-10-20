@@ -112,7 +112,4 @@ onMounted(() => {
 </script>
 
 <style scoped>
-::v-deep .custom-autocomplete {
-  width: 200px; /* 宽度 200px 左右 */
-}
 </style>
