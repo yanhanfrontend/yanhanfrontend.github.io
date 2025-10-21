@@ -12,16 +12,13 @@
 
   <el-row :gutter="10">
     <el-col v-for="music in currentData" :key="music" :xs="12" :sm="8" :md="6" :lg="4" :xl="4" class="mb-2">
-      <el-card class="max-w-[480px] h-[80px] relative group cursor-pointer transition-all duration-300" shadow="never">
-        <el-tooltip :content="music" placement="top" effect="customized">
+      <el-card class="max-w-[480px] h-[80px] relative cursor-pointer transition-all duration-300" shadow="hover"
+               @click="handleCopy(music)">
+        <el-tooltip :content="music" placement="top" effect="customized" :show-after="500">
           <span class="text-sm line-clamp-2 relative z-10">
             {{ music }}
           </span>
         </el-tooltip>
-
-        <CopyDocument
-            class="text-[#409EFF] w-[1em] h-[1em] absolute top-1/2 right-2 -translate-y-1/2 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-            @click="handleCopy(music)"/>
       </el-card>
     </el-col>
   </el-row>
@@ -47,7 +44,7 @@
 <script setup lang="ts">
 import musics from '@/musics.json'
 import {ref, computed, watch} from 'vue'
-import {Search, CopyDocument} from '@element-plus/icons-vue'
+import {Search} from '@element-plus/icons-vue'
 import useClipboard from 'vue-clipboard3'
 import {ElMessage} from 'element-plus'
 
