@@ -1,5 +1,5 @@
 <template>
-  <el-row class="h-[50px] mt-2 mb-4 flex">
+  <el-row class="h-[3rem] mt-2 mb-4 flex">
     <el-col :span="1" class="h-full flex items-center">
       <img
           src="./utopian.jpg"
@@ -7,7 +7,7 @@
           class="h-full object-contain rounded-full"
       />
     </el-col>
-    <el-col :span="6" :offset="17" class="h-full">
+    <el-col :span="22" :offset="1" class="h-full">
       <div class="w-full h-full flex items-center">
         <el-input
             v-model="searchText"
