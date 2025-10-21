@@ -28,7 +28,7 @@
         :pager-count="pagerCount"
         :background="background"
         layout="total, prev, pager, next"
-        :total="allData.length"
+        :total="filterdData.length"
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         prev-text="上一页"
@@ -52,7 +52,7 @@ const filterdData = ref(musics);
 
 const pageSize = ref(parseInt(import.meta.env.VITE_PAGE_SIZE));
 const pageCount = computed(() => {
-  return parseInt(filterdData.value.length / pageSize.value) + 1;
+  return parseInt(String(filterdData.value.length / pageSize.value)) + 1;
 });
 const pagerCount = ref(parseInt(import.meta.env.VITE_PAGER_COUNT));
 
