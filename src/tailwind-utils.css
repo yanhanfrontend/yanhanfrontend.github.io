@@ -1,0 +1,9 @@
+@layer utilities {
+    .el-popper.is-customized {
+        @apply !px-3 !py-[6px] !bg-gradient-to-r !from-[#9fed97] !to-[#cce581];
+    }
+
+    .el-popper .el-popper__arrow::before {
+        @apply !bg-gradient-to-tr !from-[#b2e68d] !to-[#bce689] !right-0;
+    }
+}

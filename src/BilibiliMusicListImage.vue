@@ -13,9 +13,11 @@
   <el-row :gutter="10">
     <el-col v-for="music in currentData" :key="music" :xs="12" :sm="8" :md="6" :lg="4" :xl="4" class="mb-2">
       <el-card class="max-w-[480px] h-[80px] relative group cursor-pointer transition-all duration-300" shadow="never">
-        <el-text size="small" line-clamp="2" class="relative z-10">
-          {{ music }}
-        </el-text>
+        <el-tooltip :content="music" placement="top" effect="customized">
+          <span class="text-sm line-clamp-2 relative z-10">
+            {{ music }}
+          </span>
+        </el-tooltip>
 
         <CopyDocument
             class="text-[#409EFF] w-[1em] h-[1em] absolute top-1/2 right-2 -translate-y-1/2 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -107,4 +109,13 @@ const handleCurrentChange = (val) => {
 </script>
 
 <style scoped>
+.el-popper.is-customized {
+  padding: 6px 12px;
+  background: linear-gradient(90deg, rgb(159, 229, 151), rgb(204, 229, 129));
+}
+
+.el-popper.is-customized .el-popper__arrow::before {
+  background: linear-gradient(45deg, #b2e68d, #bce689);
+  right: 0;
+}
 </style>
