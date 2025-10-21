@@ -3,7 +3,7 @@
     <el-col :span="1" class="h-full flex items-center">
       <img
           src="./utopian.jpg"
-          alt="Element logo"
+          alt="utopian"
           class="h-full object-contain rounded-full"
       />
     </el-col>
