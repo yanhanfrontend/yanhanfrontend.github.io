@@ -1,5 +1,5 @@
 <template>
-  <div class="p-8">
+  <div class="p-4">
     <BilibiliMusicListImage/>
   </div>
 </template>

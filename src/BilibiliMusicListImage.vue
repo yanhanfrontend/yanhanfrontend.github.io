@@ -1,5 +1,5 @@
 <template>
-  <el-row class="h-[3rem] mt-2 mb-4 flex">
+  <el-row class="h-[3rem] mb-4 flex">
     <el-col :span="1" class="h-full flex items-center">
       <img
           src="./utopian.jpg"
@@ -46,8 +46,8 @@
         :total="total"
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
-        prev-text="上一页"
-        next-text="下一页"
+        prev-text="上页"
+        next-text="下页"
     >
       <div>
         共 {{ total }} 个
@@ -64,7 +64,7 @@ import useClipboard from 'vue-clipboard3'
 import {ElMessage} from 'element-plus'
 
 const handleLogo = () => {
-  window.open('https://github.com/yanhanfrontend/yanhanfrontend.github.io', '_blank')
+  window.open('https://github.com/yanhanfrontend', '_blank')
 }
 
 const {toClipboard} = useClipboard()
