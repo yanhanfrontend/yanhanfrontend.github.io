@@ -4,7 +4,10 @@
       <img
           src="./utopian.jpg"
           alt="utopian"
-          class="h-full object-contain rounded-full"
+          class="h-full rounded-full cursor-pointer transition-transform duration-300 hover:scale-110
+          border-1 border-gray-100 p-1 bg-gradient-to-r from-orange-400 via-yellow-300 to-pink-300
+            shadow-[0_0_8px_2px_rgba(249,115,22,0.3)] transition-all"
+          @click="handleLogo"
       />
     </el-col>
     <el-col :span="22" :offset="1" class="h-full">
@@ -47,7 +50,7 @@
         next-text="下一页"
     >
       <div>
-        共 {{ pageCount }} 页 / {{ total }}个
+        共 {{ total }} 个
       </div>
     </el-pagination>
   </div>
@@ -60,9 +63,8 @@ import {Search} from '@element-plus/icons-vue'
 import useClipboard from 'vue-clipboard3'
 import {ElMessage} from 'element-plus'
 
-const activeIndex = ref('')
-const handleSelect = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
+const handleLogo = () => {
+  window.open('https://github.com/yanhanfrontend/yanhanfrontend.github.io', '_blank')
 }
 
 const {toClipboard} = useClipboard()
