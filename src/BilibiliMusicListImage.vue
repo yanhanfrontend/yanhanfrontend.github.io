@@ -39,13 +39,16 @@
         :page-count="pageCount"
         :pager-count="pagerCount"
         :background="background"
-        layout="total, prev, pager, next"
-        :total="filterdData.length"
+        layout="prev, pager, next, slot"
+        :total="total"
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         prev-text="上一页"
         next-text="下一页"
     >
+      <div>
+        共 {{ pageCount }} 页 / {{ total }}个
+      </div>
     </el-pagination>
   </div>
 </template>
@@ -82,6 +85,9 @@ const background = ref(true)
 
 const allData = ref(musics);
 const filterdData = ref(musics);
+const total = computed(() => {
+  return filterdData.value.length
+})
 
 const pageSize = ref(parseInt(import.meta.env.VITE_PAGE_SIZE));
 const pageCount = computed(() => {
