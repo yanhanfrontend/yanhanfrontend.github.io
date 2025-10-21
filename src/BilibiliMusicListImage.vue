@@ -1,14 +1,23 @@
 <template>
-  <div class="flex justify-center mb-4">
-    <div class="w-[400px]">
-      <el-input
-          v-model="searchText"
-          class="responsive-input"
-          :prefix-icon="Search"
-          clearable
+  <el-row class="h-[50px] mt-2 mb-4 flex">
+    <el-col :span="1" class="h-full flex items-center">
+      <img
+          src="./utopian.jpg"
+          alt="Element logo"
+          class="h-full object-contain rounded-full"
       />
-    </div>
-  </div>
+    </el-col>
+    <el-col :span="6" :offset="17" class="h-full">
+      <div class="w-full h-full flex items-center">
+        <el-input
+            v-model="searchText"
+            class="responsive-input w-full"
+            :prefix-icon="Search"
+            clearable
+        />
+      </div>
+    </el-col>
+  </el-row>
 
   <el-row :gutter="10">
     <el-col v-for="music in currentData" :key="music" :xs="12" :sm="8" :md="6" :lg="4" :xl="4" class="mb-2">
@@ -47,6 +56,11 @@ import {ref, computed, watch} from 'vue'
 import {Search} from '@element-plus/icons-vue'
 import useClipboard from 'vue-clipboard3'
 import {ElMessage} from 'element-plus'
+
+const activeIndex = ref('')
+const handleSelect = (key: string, keyPath: string[]) => {
+  console.log(key, keyPath)
+}
 
 const {toClipboard} = useClipboard()
 
@@ -106,6 +120,10 @@ const handleCurrentChange = (val) => {
 </script>
 
 <style scoped>
+.el-menu--horizontal > .el-menu-item:nth-child(1) {
+  margin-right: auto;
+}
+
 .el-popper.is-customized {
   padding: 6px 12px;
   background: linear-gradient(90deg, rgb(159, 229, 151), rgb(204, 229, 129));
