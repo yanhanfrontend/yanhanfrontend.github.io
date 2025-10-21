@@ -1,6 +1,6 @@
 <template>
   <el-row class="h-[3rem] mb-4 flex">
-    <el-col :span="1" class="h-full flex items-center">
+    <el-col :span="2" class="h-full flex items-center">
       <img
           src="./utopian.jpg"
           alt="utopian"
@@ -10,7 +10,7 @@
           @click="handleLogo"
       />
     </el-col>
-    <el-col :span="22" :offset="1" class="h-full">
+    <el-col :span="22" class="h-full">
       <div class="w-full h-full flex items-center">
         <el-input
             v-model="searchText"
