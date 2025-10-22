@@ -1,6 +1,6 @@
 <template>
   <div class="flex h-[3rem] mb-4">
-    <div class="flex-shrink-0 flex items-center h-full px-2">
+    <div class="flex-shrink-0 flex items-center h-full pr-2">
       <img
           src="@/assets/images/utopian.jpg"
           alt="utopian"
@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <div class="flex-shrink-0 flex justify-center items-center h-full px-2">
+    <div class="flex-shrink-0 flex justify-center items-center h-full pl-2">
       <el-icon :size="20" color="#67C23A" class="cursor-pointer" @click="handleAdd">
         <CirclePlus/>
       </el-icon>
