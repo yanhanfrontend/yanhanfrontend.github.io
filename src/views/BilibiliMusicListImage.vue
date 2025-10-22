@@ -1,33 +1,33 @@
 <template>
-  <el-row class="h-[3rem] mb-4 flex">
-    <el-col :span="4" class="h-full flex items-center">
+  <div class="flex h-[3rem] mb-4">
+    <div class="flex-shrink-0 flex items-center h-full px-2">
       <img
-          src="../assets/images/utopian.jpg"
+          src="@/assets/images/utopian.jpg"
           alt="utopian"
           class="h-full rounded-full cursor-pointer transition-transform duration-300 hover:scale-110
-          border-1 border-gray-100 p-1 bg-gradient-to-r from-orange-400 via-yellow-300 to-pink-300
-            shadow-[0_0_8px_2px_rgba(249,115,22,0.3)] transition-all"
+             border border-gray-100 p-1 bg-gradient-to-r from-orange-400 via-yellow-300 to-pink-300
+             shadow-[0_0_8px_2px_rgba(249,115,22,0.3)] transition-all"
           @click="handleLogo"
       />
-    </el-col>
-    <el-col :span="18" class="h-full">
+    </div>
+
+    <div class="flex-1 h-full mx-0">
       <div class="w-full h-full flex items-center">
         <el-input
             v-model="searchText"
-            class="responsive-input w-full"
+            class="w-full"
             :prefix-icon="Search"
             clearable
         />
       </div>
-    </el-col>
-    <el-col :span="2" class="h-full">
-      <div class="w-full h-full flex justify-center items-center">
-        <el-icon :size="20" color="#67C23A" class="cursor-pointer" @click="handleAdd">
-          <CirclePlus/>
-        </el-icon>
-      </div>
-    </el-col>
-  </el-row>
+    </div>
+
+    <div class="flex-shrink-0 flex justify-center items-center h-full px-2">
+      <el-icon :size="20" color="#67C23A" class="cursor-pointer" @click="handleAdd">
+        <CirclePlus/>
+      </el-icon>
+    </div>
+  </div>
 
   <el-dialog
       v-model="formDialogVisible"
