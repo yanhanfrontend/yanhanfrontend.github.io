@@ -2,7 +2,7 @@
   <el-row class="h-[3rem] mb-4 flex">
     <el-col :span="4" class="h-full flex items-center">
       <img
-          src="./utopian.jpg"
+          src="../assets/images/utopian.jpg"
           alt="utopian"
           class="h-full rounded-full cursor-pointer transition-transform duration-300 hover:scale-110
           border-1 border-gray-100 p-1 bg-gradient-to-r from-orange-400 via-yellow-300 to-pink-300
@@ -10,7 +10,7 @@
           @click="handleLogo"
       />
     </el-col>
-    <el-col :span="20" class="h-full">
+    <el-col :span="19" class="h-full">
       <div class="w-full h-full flex items-center">
         <el-input
             v-model="searchText"
@@ -20,17 +20,76 @@
         />
       </div>
     </el-col>
+    <el-col :span="1" class="h-full">
+      <div class="w-full h-full flex justify-center items-center">
+        <el-icon :size="20" color="#67C23A" class="cursor-pointer" @click="handleAdd">
+          <CirclePlus/>
+        </el-icon>
+      </div>
+    </el-col>
   </el-row>
+
+  <el-dialog
+      v-model="formDialogVisible"
+      :title="formTitle"
+      width="500"
+      align-center
+      :close-on-click-modal="false"
+      @close="handleFormCancel"
+  >
+    <el-form :model="form" ref="formRef" label-position="top">
+      <el-form-item label="名称" :label-width="100" prop="name">
+        <el-input
+            v-model="form.name"
+            :rows="4"
+            type="textarea"
+        />
+      </el-form-item>
+    </el-form>
+
+    <template #footer>
+      <div class="flex justify-center">
+        <el-button type="primary" @click="handleConfirm">
+          确定
+        </el-button>
+        <el-button @click="handleFormCancel">取消</el-button>
+      </div>
+    </template>
+  </el-dialog>
 
   <el-row :gutter="10">
     <el-col v-for="music in currentData" :key="music" :xs="12" :sm="8" :md="6" :lg="4" :xl="4" class="mb-2">
-      <el-card class="max-w-[480px] h-[80px] relative cursor-pointer transition-all duration-300" shadow="hover"
-               @click="handleCopy(music)">
+      <el-card class="max-w-[480px] h-[80px] relative cursor-pointer transition-all duration-300 overflow-hidden group"
+               shadow="hover">
         <el-tooltip :content="music" placement="top" effect="customized" :show-after="500">
-          <span class="text-sm line-clamp-2 relative z-10">
+          <span class="text-sm line-clamp-2 relative z-10" @click="handleCopy(music)">
             {{ music }}
           </span>
         </el-tooltip>
+
+        <div
+            class="absolute right-2 top-1 bottom-1 flex flex-col justify-between py-2 gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+          <el-icon color="#909399" class="cursor-pointer" @click.stop="handleEdit(music)">
+            <Edit/>
+          </el-icon>
+
+          <el-popconfirm
+              title="确定删除吗？"
+              placement="top"
+              confirm-button-text="是"
+              cancel-button-text="否"
+              confirm-button-type="danger"
+              :icon="WarningFilled"
+              icon-color="#F56C6C"
+              @confirm="handleDelete(music)"
+          >
+            <template #reference>
+              <el-icon color="#909399" class="cursor-pointer">
+                <Delete/>
+              </el-icon>
+            </template>
+          </el-popconfirm>
+        </div>
       </el-card>
     </el-col>
   </el-row>
@@ -57,14 +116,57 @@
 </template>
 
 <script setup lang="ts">
-import musics from '@/musics.json'
+import musics from '../../public/musics.json'
 import {ref, computed, watch} from 'vue'
-import {Search} from '@element-plus/icons-vue'
+import {Search, CirclePlus, Edit, Delete, WarningFilled} from '@element-plus/icons-vue'
 import useClipboard from 'vue-clipboard3'
 import {ElMessage} from 'element-plus'
 
 const handleLogo = () => {
   window.open('https://github.com/yanhanfrontend', '_blank')
+}
+
+const formDialogVisible = ref(false)
+const mode = ref('')
+const formTitle = ref('')
+
+const form = ref({
+  name: '',
+})
+const formRef = ref(null);
+const resetForm = () => {
+  form.value = {name: ''};
+  formRef.value?.resetFields();
+};
+
+const handleAdd = () => {
+  formDialogVisible.value = true
+  mode.value = 'add'
+  formTitle.value = '添加歌曲'
+}
+
+const handleEdit = (music) => {
+  formDialogVisible.value = true
+  mode.value = 'edit'
+  formTitle.value = '修改歌曲'
+}
+
+const handleConfirm = () => {
+  //todo
+  handleFormCancel();
+}
+
+const handleFormCancel = () => {
+  resetForm();
+  formDialogVisible.value = false
+}
+
+const handleDelete = (music) => {
+//todo
+  ElMessage({
+    message: '已删除',
+    type: 'success',
+  })
 }
 
 const {toClipboard} = useClipboard()
@@ -128,17 +230,4 @@ const handleCurrentChange = (val) => {
 </script>
 
 <style scoped>
-.el-menu--horizontal > .el-menu-item:nth-child(1) {
-  margin-right: auto;
-}
-
-.el-popper.is-customized {
-  padding: 6px 12px;
-  background: linear-gradient(90deg, rgb(159, 229, 151), rgb(204, 229, 129));
-}
-
-.el-popper.is-customized .el-popper__arrow::before {
-  background: linear-gradient(45deg, #b2e68d, #bce689);
-  right: 0;
-}
 </style>

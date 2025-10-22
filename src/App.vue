@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import BilibiliMusicListImage from './BilibiliMusicListImage.vue'
+import BilibiliMusicListImage from '@/views/BilibiliMusicListImage.vue'
 
 </script>
 
