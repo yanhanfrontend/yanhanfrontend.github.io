@@ -10,7 +10,7 @@
           @click="handleLogo"
       />
     </el-col>
-    <el-col :span="19" class="h-full">
+    <el-col :span="18" class="h-full">
       <div class="w-full h-full flex items-center">
         <el-input
             v-model="searchText"
@@ -20,7 +20,7 @@
         />
       </div>
     </el-col>
-    <el-col :span="1" class="h-full">
+    <el-col :span="2" class="h-full">
       <div class="w-full h-full flex justify-center items-center">
         <el-icon :size="20" color="#67C23A" class="cursor-pointer" @click="handleAdd">
           <CirclePlus/>
