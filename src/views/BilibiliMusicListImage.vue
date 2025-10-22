@@ -105,8 +105,8 @@
         :total="total"
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
-        prev-text="上页"
-        next-text="下页"
+        prev-text="上一页"
+        next-text="下一页"
     >
       <div>
         共 {{ total }} 个
