@@ -6,7 +6,7 @@ const path = require('path');
 const CONFIG = {
   mediaId: 217805894,       // 收藏夹ID
   startPage: 1,             // 起始页码
-  endPage: 100,              // 结束页码
+  endPage: 10,              // 结束页码
   pageSize: 40,             // 每页数量
   outputPath: 'D:\\yanhanfrontend.github.io\\public\\musics.json', // 输出文件路径
   timeout: 10000,           // 请求超时时间(ms)
