@@ -11,9 +11,6 @@ async function run() {
   console.log('▶️ 执行 musices.cjs');
   execSync('node public\\musices.cjs', { stdio: 'inherit' });
 
-  console.log('⏳ 等待10秒');
-  await new Promise(r => setTimeout(r, 10000));
-
   console.log('📦 git add .');
   execSync('git add .', { stdio: 'inherit' });
 
