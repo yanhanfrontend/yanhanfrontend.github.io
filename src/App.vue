@@ -1,12 +1,11 @@
 <template>
   <div class="p-4">
-    <BilibiliMusicListImage/>
+    <BilibiliMusicListImage />
   </div>
 </template>
 
 <script setup>
-import BilibiliMusicListImage from '@/views/BilibiliMusicListImage.vue'
-
+import BilibiliMusicListImage from "@/views/BilibiliMusicListImage.vue";
 </script>
 
 <style scoped></style>

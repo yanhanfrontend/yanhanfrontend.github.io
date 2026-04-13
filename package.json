@@ -9,7 +9,20 @@
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write ."
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx,vue}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{html,css,scss,md,json}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.2",
@@ -20,7 +33,16 @@
     "vue-clipboard3": "^2.0.0"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@vitejs/plugin-vue": "^6.0.1",
+    "eslint": "^10.2.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-vue": "^10.8.0",
+    "globals": "^17.5.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.2",
     "vite": "^7.1.7",
     "vite-plugin-vue-devtools": "^8.0.2"
   }
