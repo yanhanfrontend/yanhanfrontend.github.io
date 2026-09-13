@@ -10,24 +10,22 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      # 开启强制node24，消除这个deprecated警告
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
-      # 升级 checkout 到v6，支持node24，干掉黄色警告
       - name: Checkout code
         uses: actions/checkout@v6
+
+      # 【关键】先安装pnpm，必须写version
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9 # 写固定版本，不要latest，latest容易PATH异常
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: 24
           cache: 'pnpm'
-
-      # 推荐用官方pnpm action替代npm全局安装pnpm，更稳定
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: latest
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
