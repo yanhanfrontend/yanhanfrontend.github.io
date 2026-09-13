@@ -20,7 +20,7 @@ jobs:
 
       # 2. 安装 Node.js（指定版本）
       - name: Sync node version and setup cache
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 24
 
